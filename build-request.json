@@ -1,0 +1,98 @@
+{
+  "kind": "build_request",
+  "title": "Create a Proxy Website",
+  "projectName": "ProxyPass",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Implement a backend Motoko actor that accepts a target URL as input, fetches the content of that URL via HTTP outcalls, and returns the response body as text to the frontend.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a proxy website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Actor exposes a public async function that takes a URL string and returns the fetched page content as text",
+        "HTTP outcalls are used to retrieve remote content",
+        "Errors (unreachable host, invalid URL) are handled and an error message is returned instead of trapping"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Build a frontend UI with a URL input field and a 'Go' / 'Browse' button. When submitted, the entered URL is sent to the backend proxy function and the returned content is displayed in a sandboxed iframe or a scrollable content area.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a proxy website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A text input is clearly visible for entering the target URL",
+        "A submit button triggers the proxy request",
+        "The proxied page content is rendered in a sandboxed display area",
+        "A loading indicator is shown while the request is in progress",
+        "An error message is displayed if the backend returns an error"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Rewrite relative links, images, stylesheets, and script src attributes in the proxied HTML response so they route back through the proxy, enabling multi-hop browsing.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "Create a proxy website"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Relative URLs in the proxied HTML are converted to absolute URLs pointing through the proxy",
+        "Clicking an anchor link in the proxied content loads that page through the proxy",
+        "Images and stylesheets referenced in the proxied content are fetched via the proxy"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Apply a cohesive dark terminal/hacker aesthetic with a monospace font, neon accent color (e.g. green or cyan on near-black), clean card layout for the input bar, and consistent styling across all UI elements.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette uses dark background with a single neon accent color",
+        "Monospace or semi-monospace font is applied globally",
+        "Input bar and display area are styled as distinct cards/panels",
+        "Styling is consistent across all visible states (idle, loading, error, result)"
+      ]
+    }
+  ],
+  "constraints": [
+    "All backend logic must remain in a single Motoko actor in backend/main.mo",
+    "Do not edit any files under frontend/src/hooks/ or frontend/src/components/ui",
+    "Do not integrate any external authentication or third-party APIs"
+  ],
+  "nonGoals": [
+    "User accounts or login functionality",
+    "Browsing history persistence",
+    "JavaScript execution within proxied pages",
+    "Support for HTTPS certificate validation on proxied targets beyond what IC HTTP outcalls provide",
+    "Mobile app or native wrapper"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimalist neon-green globe icon on a dark background, flat vector style (proxy-logo.dim_128x128.png)"
+    ],
+    "edits": []
+  }
+}

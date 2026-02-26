@@ -1,0 +1,16 @@
+{
+  "backend/main.mo": "Defines the ICP backend actor with a `processRequest` function that performs HTTP GET outcalls via the OutCall module, and a `transform` query for response transformation.",
+  "feature_evidence.json": "Maps three product features (frontend UI, HTML link rewriting, terminal aesthetic) to their implementing files, components, and test IDs with confidence ratings.",
+  "frontend-file-summaries.txt": "A JSON-formatted text file containing one-line summaries of each frontend source file for build planning reference.",
+  "frontend/index.css": "Base Tailwind CSS file defining light and dark OKLCH CSS custom properties for the shadcn-ui design token system.",
+  "frontend/index.html": "Minimal HTML entry point that mounts the React app into a `#root` div and loads `main.tsx` as an ES module.",
+  "frontend/src/App.tsx": "Main application component implementing a terminal-styled proxy browser with URL input, back/forward/reload navigation, sandboxed iframe display, and browsing history management.",
+  "frontend/src/hooks/useActor.ts": "React Query hook that creates and caches an authenticated or anonymous ICP backend actor, invalidating dependent queries when the identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides an `InternetIdentityProvider` and `useInternetIdentity` hook for managing DFINITY AuthClient login, logout, and persisted identity state.",
+  "frontend/src/hooks/useQueries.ts": "Exports a `useProxyRequest` React Query mutation hook that calls the backend `processRequest` actor method with a URL and returns the proxied HTML string.",
+  "frontend/src/index.css": "Global stylesheet importing JetBrains Mono, defining a dark terminal/neon OKLCH color theme, custom scrollbar styles, and neon glow utility classes.",
+  "frontend/src/main.tsx": "React app entry point that wraps `App` with `QueryClientProvider` and `InternetIdentityProvider` before rendering into the DOM root.",
+  "frontend/src/utils/rewriteHtml.ts": "Utility that rewrites relative URLs in proxied HTML (anchors, media, scripts, links, forms, inline styles) to absolute URLs and injects a `<base>` tag, plus a helper to extract the page title.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration for the frontend, defining a dark terminal/hacker theme with neon-green accents, monospace fonts, oklch-based color tokens, and plugins for typography, container queries, and animations.",
+  "project_state.json": "Project state metadata describing a server-side proxy website, tracking existing features (UI, link rewriting, dark aesthetic) and pending feature requests (backend Motoko HTTP outcalls, URL input, response rewriting)."
+}

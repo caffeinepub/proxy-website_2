@@ -1,0 +1,7 @@
+{
+  "frontend/src/index.css": "Global styles with dark terminal/hacker aesthetic using OKLCH color tokens, JetBrains Mono font import, custom scrollbar styling, and neon glow utility classes.",
+  "frontend/tailwind.config.js": "Tailwind config extended with JetBrains Mono font family, neon/terminal color tokens, neon box-shadow utilities, and pulse/blink keyframe animations.",
+  "frontend/src/utils/rewriteHtml.ts": "Utility functions to rewrite relative URLs in proxied HTML to absolute URLs (anchors, images, scripts, links, forms, inline styles) and extract page titles.",
+  "frontend/src/hooks/useQueries.ts": "React Query mutation hook wrapping the backend `processRequest` call for proxy URL fetching with error handling.",
+  "frontend/src/App.tsx": "Main ProxyPass application with terminal-style browser UI including URL input bar, navigation controls (back/forward/reload), sandboxed iframe content display, loading/error states, and browsing history management."
+}

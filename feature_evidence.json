@@ -1,0 +1,65 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-build-a-frontend-ui-with-a-url-input-field-and-a-go-browse-button-when-submitted-the-entered-url-is-sent-to-the-backend-proxy-function-and-the-returned-content-is-displayed-in-a-sandboxed-iframe-or-a-scrollable-content-area",
+      "featureTitle": "Build a frontend UI with a URL input field and a 'Go' / 'Browse' button. When submitted, the entered URL is sent to the backend proxy function and the returned content is displayed in a sandboxed iframe or a scrollable content area.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-rewrite-relative-links-images-stylesheets-and-script-src-attributes-in-the-proxied-html-response-so-they-route-back-through-the-proxy-enabling-multi-hop-browsing",
+      "featureTitle": "Rewrite relative links, images, stylesheets, and script src attributes in the proxied HTML response so they route back through the proxy, enabling multi-hop browsing.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/utils/rewriteHtml.ts"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-a-cohesive-dark-terminal-hacker-aesthetic-with-a-monospace-font-neon-accent-color-e-g-green-or-cyan-on-near-black-clean-card-layout-for-the-input-bar-and-consistent-styling-across-all-ui-elements",
+      "featureTitle": "Apply a cohesive dark terminal/hacker aesthetic with a monospace font, neon accent color (e.g. green or cyan on near-black), clean card layout for the input bar, and consistent styling across all UI elements.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "http-outcalls@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

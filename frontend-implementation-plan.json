@@ -1,0 +1,83 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "ProxyPass - Frontend Implementation Plan",
+  "requirements": [
+    {
+      "id": "REQ-2",
+      "summary": "Build a frontend UI with a URL input field and a 'Go' / 'Browse' button. When submitted, the entered URL is sent to the backend proxy function and the returned content is displayed in a sandboxed iframe or a scrollable content area.",
+      "acceptanceCriteria": [
+        "A text input is clearly visible for entering the target URL",
+        "A submit button triggers the proxy request",
+        "The proxied page content is rendered in a sandboxed display area",
+        "A loading indicator is shown while the request is in progress",
+        "An error message is displayed if the backend returns an error"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Replace the default app content with the ProxyPass main UI. Add a URL input field (text input), a 'Go' button, and a display area for the proxied content. Implement state management for the input URL, loading state, error messages, and fetched content. Wire the submit handler to call the backend processRequest method and display the result in a sandboxed iframe using srcdoc attribute. Show a loading spinner during the request and display error messages when the backend returns an error."
+        },
+        {
+          "path": "frontend/src/hooks/useProxyRequest.ts",
+          "operation": "create",
+          "description": "Create a custom hook that encapsulates the logic for submitting a URL to the backend proxy function. The hook should accept a URL string, call the backend processRequest method, handle loading and error states, and return the fetched content along with loading and error flags. This hook provides reusable proxy request logic for the UI."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Rewrite relative links, images, stylesheets, and script src attributes in the proxied HTML response so they route back through the proxy, enabling multi-hop browsing.",
+      "acceptanceCriteria": [
+        "Relative URLs in the proxied HTML are converted to absolute URLs pointing through the proxy",
+        "Clicking an anchor link in the proxied content loads that page through the proxy",
+        "Images and stylesheets referenced in the proxied content are fetched via the proxy"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/rewriteHtml.ts",
+          "operation": "create",
+          "description": "Implement a utility function that parses the proxied HTML string and rewrites all relative URLs (anchor hrefs, img src, link href, script src) to absolute URLs that route back through the proxy. The function should accept the original HTML content and the base URL, then return the rewritten HTML. Use a DOM parser approach or regex-based rewriting to transform relative paths into absolute paths that reference the proxy endpoint."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Integrate the rewriteHtml utility function to process the backend response before displaying it in the iframe. After receiving the proxied content from the backend, pass it through the rewriteHtml function along with the original target URL as the base. Use the rewritten HTML as the iframe srcdoc content. Add an event listener or handler for anchor clicks within the iframe to intercept navigation and route subsequent requests through the proxy (capturing the clicked URL and submitting it as a new proxy request)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Apply a cohesive dark terminal/hacker aesthetic with a monospace font, neon accent color (e.g. green or cyan on near-black), clean card layout for the input bar, and consistent styling across all UI elements.",
+      "acceptanceCriteria": [
+        "Color palette uses dark background with a single neon accent color",
+        "Monospace or semi-monospace font is applied globally",
+        "Input bar and display area are styled as distinct cards/panels",
+        "Styling is consistent across all visible states (idle, loading, error, result)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global CSS variables for the dark terminal/hacker aesthetic color palette (near-black background, neon green or cyan accent). Set the global font-family to a monospace or semi-monospace typeface (e.g., 'Courier New', 'Fira Code', or 'JetBrains Mono'). Apply base styles for body and root elements to enforce the dark background and neon text color across the application."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind theme to include custom color tokens for the dark terminal aesthetic (e.g., 'terminal-bg', 'terminal-accent', 'terminal-text'). Add custom font-family entries for monospace fonts. Configure background, text, and border color utilities to align with the neon-on-dark palette. Ensure the configuration supports consistent styling for card/panel components, buttons, and input fields."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Apply Tailwind utility classes and custom CSS to style the input bar and display area as distinct terminal-style cards/panels. Use the configured neon accent color for the 'Go' button, borders, and focus states. Ensure the loading spinner and error messages use the neon accent color. Maintain consistent spacing, padding, and visual hierarchy across all UI states (idle, loading, error, result)."
+        },
+        {
+          "path": "frontend/public/assets/generated/proxy-logo.dim_128x128.png",
+          "operation": "create",
+          "description": "Wire the generated minimalist neon-green globe icon (proxy-logo.dim_128x128.png) into the UI as a branding element. Display the logo in the top-left corner or header area of the App component using an img element referencing the workspace file path frontend/public/assets/generated/proxy-logo.dim_128x128.png. Apply appropriate sizing and spacing to integrate the logo into the dark terminal aesthetic."
+        }
+      ]
+    }
+  ]
+}

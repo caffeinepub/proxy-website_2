@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "A proxy website that allows users to browse the web anonymously by routing requests through the server.",
+  "architectural_notes": [
+    "Server-side proxy: all requests are forwarded server-side to avoid CORS issues",
+    "Response rewriting: HTML links, forms, and resource URLs must be rewritten to stay within the proxy"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Minimalist neon-green globe icon on a dark background, flat vector style (proxy-logo.dim_128x128.png)",
+  "existing_features": [
+    {
+      "id": "feature-build-a-frontend-ui-with-a-url-input-field-and-a-go-browse-button-when-submitted-the-entered-url-is-sent-to-the-backend-proxy-function-and-the-returned-content-is-displayed-in-a-sandboxed-iframe-or-a-scrollable-content-area",
+      "title": "Build a frontend UI with a URL input field and a 'Go' / 'Browse' button. When submitted, the entered URL is sent to the backend proxy function and the returned content is displayed in a sandboxed iframe or a scrollable content area.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-rewrite-relative-links-images-stylesheets-and-script-src-attributes-in-the-proxied-html-response-so-they-route-back-through-the-proxy-enabling-multi-hop-browsing",
+      "title": "Rewrite relative links, images, stylesheets, and script src attributes in the proxied HTML response so they route back through the proxy, enabling multi-hop browsing.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-cohesive-dark-terminal-hacker-aesthetic-with-a-monospace-font-neon-accent-color-e-g-green-or-cyan-on-near-black-clean-card-layout-for-the-input-bar-and-consistent-styling-across-all-ui-elements",
+      "title": "Apply a cohesive dark terminal/hacker aesthetic with a monospace font, neon accent color (e.g. green or cyan on near-black), clean card layout for the input bar, and consistent styling across all UI elements.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Proxy request routing - forward user requests through the server to target URLs",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "URL input interface - simple UI for entering the target website URL",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Response rewriting - rewrite links and resources in proxied pages to route through the proxy",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Implement a backend Motoko actor that accepts a target URL as input, fetches the content of that URL via HTTP outcalls, and returns the response body as text to the frontend.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Proxy Website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
